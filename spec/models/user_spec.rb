@@ -7,7 +7,7 @@
 #  email      :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#
+
 
 require 'spec_helper'
 
@@ -25,9 +25,14 @@ describe User do
     it { should respond_to(:password_digest) }
     it { should respond_to(:password) }
      it { should respond_to(:password_confirmation) }
+     it { should respond_to(:remember_token) }
     it { should be_valid }
     it { should respond_to(:authenticate) }
   
+    describe "remember token" do
+        before { @user.save }
+        its(:remember_token) { should_not be_blank }
+      end
   
   describe "when name is too long" do
       before { @user.name = "a" * 51 }
