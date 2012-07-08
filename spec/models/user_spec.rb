@@ -7,17 +7,15 @@
 #  email      :string(255)
 #  created_at :datetime        not null
 #  updated_at :datetime        not null
-#
 
 require 'spec_helper'
-
 describe User do
 
   before do
     @user = User.new(name: "Example User", email: "user@example.com",
     password: "foobar", password_confirmation: "foobar")
-
   end
+
   subject { @user }
 
   it { should respond_to(:name) }
@@ -37,7 +35,6 @@ describe User do
 
     it { should be_admin }
   end
-
 
   describe "remember token" do
     before { @user.save }
@@ -67,15 +64,6 @@ describe User do
           @user.should be_valid
         end      
       end
-    end
-
-    describe "when email address is already taken" do
-      before do
-        user_with_same_email = @user.dup
-        user_with_same_email.save
-      end
-
-      it { should_not be_valid }
     end
 
     describe "when email address is already taken" do
@@ -134,6 +122,4 @@ describe User do
         specify { user_for_invalid_password.should be_false }
       end
     end
-
-
   end

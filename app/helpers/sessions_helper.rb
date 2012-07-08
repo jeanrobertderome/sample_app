@@ -18,6 +18,7 @@ module SessionsHelper
     @current_user ||= User.find_by_remember_token(cookies[:remember_token]) 
   end
   
+<<<<<<< HEAD
   def current_user?(user)
       user == current_user
     end
@@ -30,4 +31,11 @@ module SessionsHelper
       def store_location
         session[:return_to] = request.fullpath
       end
+=======
+  def sign_out
+      self.current_user = nil
+      cookies.delete(:remember_token)
+    end
+  
+>>>>>>> fe00016b9970299705ff3367cdba32c17d9b97c1
 end

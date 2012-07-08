@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def create
+<<<<<<< HEAD
     @user = User.new(params[:user])
     if @user.save
       flash[:success] = "Welcome to the Sample App!"
@@ -53,6 +54,16 @@ class UsersController < ApplicationController
     unless signed_in?
       store_location
       redirect_to signin_path, notice: "Please sign in."
+=======
+      @user = User.new(params[:user])
+      if @user.save
+        sign_in @user
+         flash[:success] = "Welcome to the Sample App!"
+        redirect_to @user
+      else
+        render 'new'
+      end
+>>>>>>> fe00016b9970299705ff3367cdba32c17d9b97c1
     end
   end
 
