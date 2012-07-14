@@ -11,7 +11,6 @@ RSpec::Matchers.define :have_error_message do |message|
     page.should have_selector('div.alert.alert-error', text: message)
   end
 end
-<<<<<<< HEAD
 
 def sign_in(user)
   visit signin_path
@@ -21,5 +20,4 @@ def sign_in(user)
   # Sign in when not using Capybara as well.
   cookies[:remember_token] = user.remember_token
 end
-=======
->>>>>>> fe00016b9970299705ff3367cdba32c17d9b97c1
+

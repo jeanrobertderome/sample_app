@@ -11,11 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20120630181906) do
-=======
-ActiveRecord::Schema.define(:version => 20120625190721) do
->>>>>>> fe00016b9970299705ff3367cdba32c17d9b97c1
+ActiveRecord::Schema.define(:version => 20120713180606) do
+
+  create_table "microposts", :force => true do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
   create_table "users", :force => true do |t|
     t.string   "name"
@@ -24,10 +29,7 @@ ActiveRecord::Schema.define(:version => 20120625190721) do
     t.datetime "updated_at",      :null => false
     t.string   "password_digest"
     t.string   "remember_token"
-<<<<<<< HEAD
     t.boolean  "admin"
-=======
->>>>>>> fe00016b9970299705ff3367cdba32c17d9b97c1
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
